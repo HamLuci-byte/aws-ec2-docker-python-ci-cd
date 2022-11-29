@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: Buid & Deploy (Docker)
+name: Buid & Deploy (Docker.)
 
 jobs:
   build:
