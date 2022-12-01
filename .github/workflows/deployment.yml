@@ -51,7 +51,7 @@ jobs:
         sed -i -e 's/ECR_REGISTRY/'"$ECR_REGISTRY"'/' ${{ github.workspace }}/docker-compose.yml
         scp -o StrictHostKeyChecking=no -i private_key.pem ${{ github.workspace }}/docker-compose.yml ${USER_NAME}@${HOSTNAME}:/tmp 
         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-          
+          aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 522249388325.dkr.ecr.eu-central-1.amazonaws.com
           cd /tmp
           # docker stop backend-flask
           # docker rm backend-flask
