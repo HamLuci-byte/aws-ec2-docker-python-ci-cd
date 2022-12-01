@@ -43,6 +43,7 @@ jobs:
         USER_NAME: ${{ secrets.USERNAME  }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       run: |
+        aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 522249388325.dkr.ecr.eu-central-1.amazonaws.com
         echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
         ls
         sed -i -e 's/GITHUB_SHA/'"$GITHUB_SHA"'/' ${{ github.workspace }}/docker-compose.yml
